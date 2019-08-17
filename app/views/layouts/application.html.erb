@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Flixter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +11,51 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg">
+      <%= link_to 'Flixter', root_path, class: 'navbar-brand' %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span>
+          <i class="fa fa-navicon menu-toggle"></i>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to '#', class: 'nav-link'  do %>
+            <i class="fa fa-plus-circle"></i>
+            New Place
+            <% end %>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to '#', user_path(current_user), class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
+              </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </nav>
+
+    <% if notice.present? %>
+      <p class="alert alert-info"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <%end %>
+
     <%= yield %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

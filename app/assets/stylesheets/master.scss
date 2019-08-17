@@ -1,0 +1,15 @@
+@import 'bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Noto+Serif:400,700&display=swap');
+
+.navbar {
+  font-family: 'Noto Sans', sans-serif;
+  box-shadow: 0px 1px 3px #2a2a2a;
+  background: image_url('noisy_net.png');
+
+}
+
+.navbar-brand {
+  font-family: 'Noto Serif', serif;
+  font-weight: 700;
+  color: #fff;
+}
