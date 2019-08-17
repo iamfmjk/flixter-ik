@@ -1,9 +1,13 @@
 @import 'bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Noto+Serif:400,700&display=swap');
 
+h1, h2, h3, h4, h5, h6, .navbar {
+  margin: 0;
+}
+
 .navbar {
   font-family: 'Noto Sans', sans-serif;
-  box-shadow: 0px 1px 3px #2a2a2a;
+  box-shadow: 0px 1px 1px #2a2a2a;
   background: image_url('noisy_net.png');
 
 }
@@ -12,4 +16,40 @@
   font-family: 'Noto Serif', serif;
   font-weight: 700;
   color: #fff;
+}
+
+.form-box {
+  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-color: #e4e4e4 #bebebd #e4e4e4 #bebebd;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 20px;
+}
+
+.hero {
+  background: image_url('hero.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 370px;
+  box-shadow: 0px 3px 8px #2a2a2a;
+}
+
+.frosty {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.frosty h1, h2 {
+  text-shadow: rgba(0, 0, 0, 0.95) 1px 1px;
+}
+
+.btn {
+  border-radius: 0;
 }
