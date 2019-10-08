@@ -3,6 +3,7 @@
 <div class="form-box col-10 offset-1">
   <h1>
     <%= @course.title %>
+    <%= image_tag(@course.image.to_s, class: 'img-fluid') %>
   </h1>
   <br />
   <div class="row">
