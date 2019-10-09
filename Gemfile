@@ -62,15 +62,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap', '~> 4.3.1'
-
 gem 'simple_form'
-
 gem 'devise'
-
-gem 'carrierwave', '~> 2.0'
-
 gem 'figaro'
-
+gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
-
 gem 'mini_magick'
+gem 'carrierwave-aws'
