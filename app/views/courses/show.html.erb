@@ -1,10 +1,13 @@
 <br />
 
 <div class="form-box col-10 offset-1">
-  <h1>
-    <%= @course.title %>
+  <div class="text-center">
+    <h1>
+      <%= @course.title %>
+    </h1>
+    <br />
     <%= image_tag(@course.image.to_s, class: 'img-fluid') %>
-  </h1>
+  </div>
   <br />
   <div class="row">
     <div class="col-sm-4 col-12 text-center">
@@ -16,6 +19,13 @@
         <br />
         <%= link_to 'Administer', instructor_course_path(@course), class: 'btn btn-danger btn-large' %>
       <% end %>
+      <br />
+      <br />
+      <% if current_user && current_user.enrolled_in?(@course) %>
+        <h3 class="badge badge-info">You Are Enrolled!</h3>
+      <% else %>
+        <%= link_to 'Enroll', course_enrollments_path(@course), class: 'btn btn-primary', method: :post %>
+      <% end %>
     </div>
 
     <div class="col-sm-8 col-12">
@@ -23,7 +33,7 @@
       <br />
     </div>
   </div>
-<br />
+  <br />
   <div class="col-12">
     <% @course.sections.each do |section| %>
     <div class="section">
