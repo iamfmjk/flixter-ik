@@ -13,7 +13,7 @@ class Course < ApplicationRecord
     cost.zero?
   end
 
-  def premium
+  def premium?
     ! free?
   end
 end
