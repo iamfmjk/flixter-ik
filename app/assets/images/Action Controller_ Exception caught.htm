@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://localhost:3030/instructor/lesson/14 -->
+<html lang="en" class="gr__localhost"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Action Controller: Exception caught</title>
+  <style>
+    body {
+      background-color: #FAFAFA;
+      color: #333;
+      margin: 0px;
+    }
+
+    body, p, ol, ul, td {
+      font-family: helvetica, verdana, arial, sans-serif;
+      font-size:   13px;
+      line-height: 18px;
+    }
+
+    pre {
+      font-size: 11px;
+      white-space: pre-wrap;
+    }
+
+    pre.box {
+      border: 1px solid #EEE;
+      padding: 10px;
+      margin: 0px;
+      width: 958px;
+    }
+
+    header {
+      color: #F0F0F0;
+      background: #C52F24;
+      padding: 0.5em 1.5em;
+    }
+
+    h1 {
+      margin: 0.2em 0;
+      line-height: 1.1em;
+      font-size: 2em;
+    }
+
+    h2 {
+      color: #C52F24;
+      line-height: 25px;
+    }
+
+    .details {
+      border: 1px solid #D0D0D0;
+      border-radius: 4px;
+      margin: 1em 0px;
+      display: block;
+      width: 978px;
+    }
+
+    .summary {
+      padding: 8px 15px;
+      border-bottom: 1px solid #D0D0D0;
+      display: block;
+    }
+
+    .details pre {
+      margin: 5px;
+      border: none;
+    }
+
+    #container {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0 1.5em;
+    }
+
+    .source * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .source {
+      border: 1px solid #D9D9D9;
+      background: #ECECEC;
+      width: 978px;
+    }
+
+    .source pre {
+      padding: 10px 0px;
+      border: none;
+    }
+
+    .source .data {
+      font-size: 80%;
+      overflow: auto;
+      background-color: #FFF;
+    }
+
+    .info {
+      padding: 0.5em;
+    }
+
+    .source .data .line_numbers {
+      background-color: #ECECEC;
+      color: #AAA;
+      padding: 1em .5em;
+      border-right: 1px solid #DDD;
+      text-align: right;
+    }
+
+    .line {
+      padding-left: 10px;
+      white-space: pre;
+    }
+
+    .line:hover {
+      background-color: #F6F6F6;
+    }
+
+    .line.active {
+      background-color: #FFCCCC;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    a { color: #980905; }
+    a:visited { color: #666; }
+    a.trace-frames { color: #666; }
+    a:hover { color: #C52F24; }
+    a.trace-frames.selected { color: #C52F24 }
+
+      #route_table {
+    margin: 0;
+    border-collapse: collapse;
+  }
+
+  #route_table thead tr {
+    border-bottom: 2px solid #ddd;
+  }
+
+  #route_table thead tr.bottom {
+    border-bottom: none;
+  }
+
+  #route_table thead tr.bottom th {
+    padding: 10px 0;
+    line-height: 15px;
+  }
+
+  #route_table thead tr.bottom th input#search {
+    -webkit-appearance: textfield;
+  }
+
+  #route_table tbody tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  #route_table tbody tr:nth-child(odd) {
+    background: #f2f2f2;
+  }
+
+  #route_table tbody.exact_matches,
+  #route_table tbody.fuzzy_matches {
+    background-color: LightGoldenRodYellow;
+    border-bottom: solid 2px SlateGrey;
+  }
+
+  #route_table tbody.exact_matches tr,
+  #route_table tbody.fuzzy_matches tr {
+    background: none;
+    border-bottom: none;
+  }
+
+  #route_table td {
+    padding: 4px 30px;
+  }
+
+  #path_search {
+    width: 80%;
+    font-size: inherit;
+  }
+
+  </style>
+
+  <script>
+    var toggle = function(id) {
+      var s = document.getElementById(id).style;
+      s.display = s.display == 'none' ? 'block' : 'none';
+      return false;
+    }
+    var show = function(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+    var hide = function(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+    var toggleTrace = function() {
+      return toggle('blame_trace');
+    }
+    var toggleSessionDump = function() {
+      return toggle('session_dump');
+    }
+    var toggleEnvDump = function() {
+      return toggle('env_dump');
+    }
+  </script>
+</head>
+<body data-gr-c-s-loaded="true" cz-shortcut-listen="true">
+
+<header>
+  <h1>Routing Error</h1>
+</header>
+<div id="container">
+  <h2>No route matches [GET] "/instructor/lesson/14"</h2>
+
+  
+<p><code>Rails.root: /vagrant/src/flixter</code></p>
+
+<div id="traces">
+    <a href="http://localhost:3030/instructor/lesson/14#" onclick="hide(&#39;Framework-Trace&#39;);hide(&#39;Full-Trace&#39;);show(&#39;Application-Trace&#39;);; return false;">Application Trace</a> |
+    <a href="http://localhost:3030/instructor/lesson/14#" onclick="hide(&#39;Application-Trace&#39;);hide(&#39;Full-Trace&#39;);show(&#39;Framework-Trace&#39;);; return false;">Framework Trace</a> |
+    <a href="http://localhost:3030/instructor/lesson/14#" onclick="hide(&#39;Application-Trace&#39;);hide(&#39;Framework-Trace&#39;);show(&#39;Full-Trace&#39;);; return false;">Full Trace</a> 
+
+    <div id="Application-Trace" style="display: block;">
+      <pre><code></code></pre>
+    </div>
+    <div id="Framework-Trace" style="display: none;">
+      <pre><code><a class="trace-frames" data-frame-id="0" href="http://localhost:3030/instructor/lesson/14#">actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'</a><br><a class="trace-frames" data-frame-id="1" href="http://localhost:3030/instructor/lesson/14#">web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'</a><br><a class="trace-frames" data-frame-id="2" href="http://localhost:3030/instructor/lesson/14#">web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'</a><br><a class="trace-frames" data-frame-id="3" href="http://localhost:3030/instructor/lesson/14#">web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'</a><br><a class="trace-frames" data-frame-id="4" href="http://localhost:3030/instructor/lesson/14#">web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'</a><br><a class="trace-frames" data-frame-id="5" href="http://localhost:3030/instructor/lesson/14#">actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'</a><br><a class="trace-frames" data-frame-id="6" href="http://localhost:3030/instructor/lesson/14#">railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'</a><br><a class="trace-frames" data-frame-id="7" href="http://localhost:3030/instructor/lesson/14#">railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'</a><br><a class="trace-frames" data-frame-id="8" href="http://localhost:3030/instructor/lesson/14#">activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'</a><br><a class="trace-frames" data-frame-id="9" href="http://localhost:3030/instructor/lesson/14#">activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'</a><br><a class="trace-frames" data-frame-id="10" href="http://localhost:3030/instructor/lesson/14#">activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'</a><br><a class="trace-frames" data-frame-id="11" href="http://localhost:3030/instructor/lesson/14#">railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'</a><br><a class="trace-frames" data-frame-id="12" href="http://localhost:3030/instructor/lesson/14#">sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'</a><br><a class="trace-frames" data-frame-id="13" href="http://localhost:3030/instructor/lesson/14#">actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'</a><br><a class="trace-frames" data-frame-id="14" href="http://localhost:3030/instructor/lesson/14#">actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'</a><br><a class="trace-frames" data-frame-id="15" href="http://localhost:3030/instructor/lesson/14#">rack (2.0.7) lib/rack/method_override.rb:22:in `call'</a><br><a class="trace-frames" data-frame-id="16" href="http://localhost:3030/instructor/lesson/14#">rack (2.0.7) lib/rack/runtime.rb:22:in `call'</a><br><a class="trace-frames" data-frame-id="17" href="http://localhost:3030/instructor/lesson/14#">activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'</a><br><a class="trace-frames" data-frame-id="18" href="http://localhost:3030/instructor/lesson/14#">actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'</a><br><a class="trace-frames" data-frame-id="19" href="http://localhost:3030/instructor/lesson/14#">actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'</a><br><a class="trace-frames" data-frame-id="20" href="http://localhost:3030/instructor/lesson/14#">rack (2.0.7) lib/rack/sendfile.rb:111:in `call'</a><br><a class="trace-frames" data-frame-id="21" href="http://localhost:3030/instructor/lesson/14#">railties (5.2.3) lib/rails/engine.rb:524:in `call'</a><br><a class="trace-frames" data-frame-id="22" href="http://localhost:3030/instructor/lesson/14#">puma (3.12.1) lib/puma/configuration.rb:227:in `call'</a><br><a class="trace-frames" data-frame-id="23" href="http://localhost:3030/instructor/lesson/14#">puma (3.12.1) lib/puma/server.rb:660:in `handle_request'</a><br><a class="trace-frames" data-frame-id="24" href="http://localhost:3030/instructor/lesson/14#">puma (3.12.1) lib/puma/server.rb:474:in `process_client'</a><br><a class="trace-frames" data-frame-id="25" href="http://localhost:3030/instructor/lesson/14#">puma (3.12.1) lib/puma/server.rb:334:in `block in run'</a><br><a class="trace-frames" data-frame-id="26" href="http://localhost:3030/instructor/lesson/14#">puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'</a><br></code></pre>
+    </div>
+    <div id="Full-Trace" style="display: none;">
+      <pre><code><a class="trace-frames" data-frame-id="0" href="http://localhost:3030/instructor/lesson/14#">actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'</a><br><a class="trace-frames" data-frame-id="1" href="http://localhost:3030/instructor/lesson/14#">web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'</a><br><a class="trace-frames" data-frame-id="2" href="http://localhost:3030/instructor/lesson/14#">web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'</a><br><a class="trace-frames" data-frame-id="3" href="http://localhost:3030/instructor/lesson/14#">web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'</a><br><a class="trace-frames" data-frame-id="4" href="http://localhost:3030/instructor/lesson/14#">web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'</a><br><a class="trace-frames" data-frame-id="5" href="http://localhost:3030/instructor/lesson/14#">actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'</a><br><a class="trace-frames" data-frame-id="6" href="http://localhost:3030/instructor/lesson/14#">railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'</a><br><a class="trace-frames" data-frame-id="7" href="http://localhost:3030/instructor/lesson/14#">railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'</a><br><a class="trace-frames" data-frame-id="8" href="http://localhost:3030/instructor/lesson/14#">activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'</a><br><a class="trace-frames" data-frame-id="9" href="http://localhost:3030/instructor/lesson/14#">activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'</a><br><a class="trace-frames" data-frame-id="10" href="http://localhost:3030/instructor/lesson/14#">activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'</a><br><a class="trace-frames" data-frame-id="11" href="http://localhost:3030/instructor/lesson/14#">railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'</a><br><a class="trace-frames" data-frame-id="12" href="http://localhost:3030/instructor/lesson/14#">sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'</a><br><a class="trace-frames" data-frame-id="13" href="http://localhost:3030/instructor/lesson/14#">actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'</a><br><a class="trace-frames" data-frame-id="14" href="http://localhost:3030/instructor/lesson/14#">actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'</a><br><a class="trace-frames" data-frame-id="15" href="http://localhost:3030/instructor/lesson/14#">rack (2.0.7) lib/rack/method_override.rb:22:in `call'</a><br><a class="trace-frames" data-frame-id="16" href="http://localhost:3030/instructor/lesson/14#">rack (2.0.7) lib/rack/runtime.rb:22:in `call'</a><br><a class="trace-frames" data-frame-id="17" href="http://localhost:3030/instructor/lesson/14#">activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'</a><br><a class="trace-frames" data-frame-id="18" href="http://localhost:3030/instructor/lesson/14#">actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'</a><br><a class="trace-frames" data-frame-id="19" href="http://localhost:3030/instructor/lesson/14#">actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'</a><br><a class="trace-frames" data-frame-id="20" href="http://localhost:3030/instructor/lesson/14#">rack (2.0.7) lib/rack/sendfile.rb:111:in `call'</a><br><a class="trace-frames" data-frame-id="21" href="http://localhost:3030/instructor/lesson/14#">railties (5.2.3) lib/rails/engine.rb:524:in `call'</a><br><a class="trace-frames" data-frame-id="22" href="http://localhost:3030/instructor/lesson/14#">puma (3.12.1) lib/puma/configuration.rb:227:in `call'</a><br><a class="trace-frames" data-frame-id="23" href="http://localhost:3030/instructor/lesson/14#">puma (3.12.1) lib/puma/server.rb:660:in `handle_request'</a><br><a class="trace-frames" data-frame-id="24" href="http://localhost:3030/instructor/lesson/14#">puma (3.12.1) lib/puma/server.rb:474:in `process_client'</a><br><a class="trace-frames" data-frame-id="25" href="http://localhost:3030/instructor/lesson/14#">puma (3.12.1) lib/puma/server.rb:334:in `block in run'</a><br><a class="trace-frames" data-frame-id="26" href="http://localhost:3030/instructor/lesson/14#">puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'</a><br></code></pre>
+    </div>
+
+  <script type="text/javascript">
+    var traceFrames = document.getElementsByClassName('trace-frames');
+    var selectedFrame, currentSource = document.getElementById('frame-source-0');
+
+    // Add click listeners for all stack frames
+    for (var i = 0; i < traceFrames.length; i++) {
+      traceFrames[i].addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = e.target;
+        var frame_id = target.dataset.frameId;
+
+        if (selectedFrame) {
+          selectedFrame.className = selectedFrame.className.replace("selected", "");
+        }
+
+        target.className += " selected";
+        selectedFrame = target;
+
+        // Change the extracted source code
+        changeSourceExtract(frame_id);
+      });
+
+      function changeSourceExtract(frame_id) {
+        var el = document.getElementById('frame-source-' + frame_id);
+        if (currentSource && el) {
+          currentSource.className += " hidden";
+          el.className = el.className.replace(" hidden", "");
+          currentSource = el;
+        }
+      }
+    }
+  </script>
+</div>
+
+
+    <h2>
+      Routes
+    </h2>
+
+    <p>
+      Routes match in priority from top to bottom
+    </p>
+
+    
+<table id="route_table" class="route_table">
+  <thead>
+    <tr>
+      <th>Helper</th>
+      <th>HTTP Verb</th>
+      <th>Path</th>
+      <th>Controller#Action</th>
+    </tr>
+    <tr class="bottom">
+      <th>
+        <a data-route-helper="_path" title="Returns a relative path (without the http or domain)" href="http://localhost:3030/instructor/lesson/14#">Path</a> /
+        <a data-route-helper="_url" title="Returns an absolute URL (with the http and domain)" href="http://localhost:3030/instructor/lesson/14#">Url</a>
+      </th>
+      <th>
+      </th>
+      <th>
+        <input id="search" placeholder="Path Match" type="search" name="path[]">
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody class="exact_matches" id="exact_matches">
+  </tbody>
+  <tbody class="fuzzy_matches" id="fuzzy_matches">
+  </tbody>
+  <tbody>
+    <tr class="route_row" data-helper="path">
+  <td data-route-name="new_user_session">
+      new_user_session<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/users/sign_in(.:format)">
+    /users/sign_in(.:format)
+  </td>
+  <td>
+    <p>devise/sessions#new</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="user_session">
+      user_session<span class="helper">_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path="/users/sign_in(.:format)">
+    /users/sign_in(.:format)
+  </td>
+  <td>
+    <p>devise/sessions#create</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="destroy_user_session">
+      destroy_user_session<span class="helper">_path</span>
+  </td>
+  <td>
+    DELETE
+  </td>
+  <td data-route-path="/users/sign_out(.:format)">
+    /users/sign_out(.:format)
+  </td>
+  <td>
+    <p>devise/sessions#destroy</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_user_password">
+      new_user_password<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/users/password/new(.:format)">
+    /users/password/new(.:format)
+  </td>
+  <td>
+    <p>devise/passwords#new</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="edit_user_password">
+      edit_user_password<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/users/password/edit(.:format)">
+    /users/password/edit(.:format)
+  </td>
+  <td>
+    <p>devise/passwords#edit</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="user_password">
+      user_password<span class="helper">_path</span>
+  </td>
+  <td>
+    PATCH
+  </td>
+  <td data-route-path="/users/password(.:format)">
+    /users/password(.:format)
+  </td>
+  <td>
+    <p>devise/passwords#update</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td>
+    PUT
+  </td>
+  <td data-route-path="/users/password(.:format)">
+    /users/password(.:format)
+  </td>
+  <td>
+    <p>devise/passwords#update</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path="/users/password(.:format)">
+    /users/password(.:format)
+  </td>
+  <td>
+    <p>devise/passwords#create</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="cancel_user_registration">
+      cancel_user_registration<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/users/cancel(.:format)">
+    /users/cancel(.:format)
+  </td>
+  <td>
+    <p>devise/registrations#cancel</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_user_registration">
+      new_user_registration<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/users/sign_up(.:format)">
+    /users/sign_up(.:format)
+  </td>
+  <td>
+    <p>devise/registrations#new</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="edit_user_registration">
+      edit_user_registration<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/users/edit(.:format)">
+    /users/edit(.:format)
+  </td>
+  <td>
+    <p>devise/registrations#edit</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="user_registration">
+      user_registration<span class="helper">_path</span>
+  </td>
+  <td>
+    PATCH
+  </td>
+  <td data-route-path="/users(.:format)">
+    /users(.:format)
+  </td>
+  <td>
+    <p>devise/registrations#update</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td>
+    PUT
+  </td>
+  <td data-route-path="/users(.:format)">
+    /users(.:format)
+  </td>
+  <td>
+    <p>devise/registrations#update</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td>
+    DELETE
+  </td>
+  <td data-route-path="/users(.:format)">
+    /users(.:format)
+  </td>
+  <td>
+    <p>devise/registrations#destroy</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path="/users(.:format)">
+    /users(.:format)
+  </td>
+  <td>
+    <p>devise/registrations#create</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="root">
+      root<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/">
+    /
+  </td>
+  <td>
+    <p>static_pages#index</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="course_enrollments">
+      course_enrollments<span class="helper">_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path="/courses/:course_id/enrollments(.:format)">
+    /courses/:course_id/enrollments(.:format)
+  </td>
+  <td>
+    <p>enrollments#create</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="courses">
+      courses<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/courses(.:format)">
+    /courses(.:format)
+  </td>
+  <td>
+    <p>courses#index</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="course">
+      course<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/courses/:id(.:format)">
+    /courses/:id(.:format)
+  </td>
+  <td>
+    <p>courses#show</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="lesson">
+      lesson<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/lessons/:id(.:format)">
+    /lessons/:id(.:format)
+  </td>
+  <td>
+    <p>lessons#show</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="instructor_lesson">
+      instructor_lesson<span class="helper">_path</span>
+  </td>
+  <td>
+    PATCH
+  </td>
+  <td data-route-path="/instructor/lessons/:id(.:format)">
+    /instructor/lessons/:id(.:format)
+  </td>
+  <td>
+    <p>instructor/lessons#update</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="">
+  </td>
+  <td>
+    PUT
+  </td>
+  <td data-route-path="/instructor/lessons/:id(.:format)">
+    /instructor/lessons/:id(.:format)
+  </td>
+  <td>
+    <p>instructor/lessons#update</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="instructor_section_lessons">
+      instructor_section_lessons<span class="helper">_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path="/instructor/sections/:section_id/lessons(.:format)">
+    /instructor/sections/:section_id/lessons(.:format)
+  </td>
+  <td>
+    <p>instructor/lessons#create</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_instructor_section_lesson">
+      new_instructor_section_lesson<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/instructor/sections/:section_id/lessons/new(.:format)">
+    /instructor/sections/:section_id/lessons/new(.:format)
+  </td>
+  <td>
+    <p>instructor/lessons#new</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="instructor_course_sections">
+      instructor_course_sections<span class="helper">_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path="/instructor/courses/:course_id/sections(.:format)">
+    /instructor/courses/:course_id/sections(.:format)
+  </td>
+  <td>
+    <p>instructor/sections#create</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_instructor_course_section">
+      new_instructor_course_section<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/instructor/courses/:course_id/sections/new(.:format)">
+    /instructor/courses/:course_id/sections/new(.:format)
+  </td>
+  <td>
+    <p>instructor/sections#new</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="instructor_courses">
+      instructor_courses<span class="helper">_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path="/instructor/courses(.:format)">
+    /instructor/courses(.:format)
+  </td>
+  <td>
+    <p>instructor/courses#create</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="new_instructor_course">
+      new_instructor_course<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/instructor/courses/new(.:format)">
+    /instructor/courses/new(.:format)
+  </td>
+  <td>
+    <p>instructor/courses#new</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="instructor_course">
+      instructor_course<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/instructor/courses/:id(.:format)">
+    /instructor/courses/:id(.:format)
+  </td>
+  <td>
+    <p>instructor/courses#show</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="rails_service_blob">
+      rails_service_blob<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/rails/active_storage/blobs/:signed_id/*filename(.:format)">
+    /rails/active_storage/blobs/:signed_id/*filename(.:format)
+  </td>
+  <td>
+    <p>active_storage/blobs#show</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="rails_blob_representation">
+      rails_blob_representation<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)">
+    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)
+  </td>
+  <td>
+    <p>active_storage/representations#show</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="rails_disk_service">
+      rails_disk_service<span class="helper">_path</span>
+  </td>
+  <td>
+    GET
+  </td>
+  <td data-route-path="/rails/active_storage/disk/:encoded_key/*filename(.:format)">
+    /rails/active_storage/disk/:encoded_key/*filename(.:format)
+  </td>
+  <td>
+    <p>active_storage/disk#show</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="update_rails_disk_service">
+      update_rails_disk_service<span class="helper">_path</span>
+  </td>
+  <td>
+    PUT
+  </td>
+  <td data-route-path="/rails/active_storage/disk/:encoded_token(.:format)">
+    /rails/active_storage/disk/:encoded_token(.:format)
+  </td>
+  <td>
+    <p>active_storage/disk#update</p>
+  </td>
+</tr>
+<tr class="route_row" data-helper="path">
+  <td data-route-name="rails_direct_uploads">
+      rails_direct_uploads<span class="helper">_path</span>
+  </td>
+  <td>
+    POST
+  </td>
+  <td data-route-path="/rails/active_storage/direct_uploads(.:format)">
+    /rails/active_storage/direct_uploads(.:format)
+  </td>
+  <td>
+    <p>active_storage/direct_uploads#create</p>
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+<script type="text/javascript">
+  // support forEarch iterator on NodeList
+  NodeList.prototype.forEach = Array.prototype.forEach;
+
+  // Enables path search functionality
+  function setupMatchPaths() {
+    // Check if there are any matched results in a section
+    function checkNoMatch(section, noMatchText) {
+      if (section.children.length <= 1) {
+        section.innerHTML += noMatchText;
+      }
+    }
+
+    // get JSON from URL and invoke callback with result
+    function getJSON(url, success) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+      xhr.onload = function() {
+        if (this.status == 200)
+          success(JSON.parse(this.response));
+      };
+      xhr.send();
+    }
+
+    function delayedKeyup(input, callback) {
+      var timeout;
+      input.onkeyup = function(){
+        if (timeout) clearTimeout(timeout);
+        timeout = setTimeout(callback, 300);
+      }
+    }
+
+    // remove params or fragments
+    function sanitizePath(path) {
+      return path.replace(/[#?].*/, '');
+    }
+
+    var pathElements = document.querySelectorAll('#route_table [data-route-path]'),
+        searchElem   = document.querySelector('#search'),
+        exactSection = document.querySelector('#exact_matches'),
+        fuzzySection = document.querySelector('#fuzzy_matches');
+
+    // Remove matches when no search value is present
+    searchElem.onblur = function(e) {
+      if (searchElem.value === "") {
+        exactSection.innerHTML = "";
+        fuzzySection.innerHTML = "";
+      }
+    }
+
+    // On key press perform a search for matching paths
+    delayedKeyup(searchElem, function() {
+      var path = sanitizePath(searchElem.value),
+          defaultExactMatch = '<tr><th colspan="4">Paths Matching (' + path +'):</th></tr>',
+          defaultFuzzyMatch = '<tr><th colspan="4">Paths Containing (' + path +'):</th></tr>',
+          noExactMatch      = '<tr><th colspan="4">No Exact Matches Found</th></tr>',
+          noFuzzyMatch      = '<tr><th colspan="4">No Fuzzy Matches Found</th></tr>';
+
+      if (!path)
+        return searchElem.onblur();
+
+      getJSON('/rails/info/routes?path=' + path, function(matches){
+        // Clear out results section
+        exactSection.innerHTML = defaultExactMatch;
+        fuzzySection.innerHTML = defaultFuzzyMatch;
+
+        // Display exact matches and fuzzy matches
+        pathElements.forEach(function(elem) {
+          var elemPath = elem.getAttribute('data-route-path');
+
+          if (matches['exact'].indexOf(elemPath) != -1)
+            exactSection.appendChild(elem.parentNode.cloneNode(true));
+
+          if (matches['fuzzy'].indexOf(elemPath) != -1)
+            fuzzySection.appendChild(elem.parentNode.cloneNode(true));
+        })
+
+        // Display 'No Matches' message when no matches are found
+        checkNoMatch(exactSection, noExactMatch);
+        checkNoMatch(fuzzySection, noFuzzyMatch);
+      })
+    })
+  }
+
+  // Enables functionality to toggle between `_path` and `_url` helper suffixes
+  function setupRouteToggleHelperLinks() {
+
+    // Sets content for each element
+    function setValOn(elems, val) {
+      elems.forEach(function(elem) {
+        elem.innerHTML = val;
+      });
+    }
+
+    // Sets onClick event for each element
+    function onClick(elems, func) {
+      elems.forEach(function(elem) {
+        elem.onclick = func;
+      });
+    }
+
+    var toggleLinks = document.querySelectorAll('#route_table [data-route-helper]');
+
+    onClick(toggleLinks, function(){
+      var helperTxt   = this.getAttribute("data-route-helper"),
+          helperElems = document.querySelectorAll('[data-route-name] span.helper');
+
+      setValOn(helperElems, helperTxt);
+    });
+  }
+
+  setupMatchPaths();
+  setupRouteToggleHelperLinks();
+</script>
+
+
+  
+<h2 style="margin-top: 30px">Request</h2>
+<p><b>Parameters</b>:</p> <pre>None</pre>
+
+<div class="details">
+  <div class="summary"><a href="http://localhost:3030/instructor/lesson/14#" onclick="return toggleSessionDump()">Toggle session dump</a></div>
+  <div id="session_dump" style="display:none"><pre>_csrf_token: "uOVR2OG2LFswU6jR4p5VpOec/vdP6HA76OjhCAQF1wA="
+session_id: "bc85b0be196b5dccef4d2baf510213fc"
+warden.user.user.key: [[1], "$2a$11$cPq598UroCeR6bOV1DQblu"]</pre></div>
+</div>
+
+<div class="details">
+  <div class="summary"><a href="http://localhost:3030/instructor/lesson/14#" onclick="return toggleEnvDump()">Toggle env dump</a></div>
+  <div id="env_dump" style="display:none"><pre>GATEWAY_INTERFACE: "CGI/1.2"
+HTTP_ACCEPT: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3"
+HTTP_ACCEPT_ENCODING: "gzip, deflate, br"
+HTTP_ACCEPT_LANGUAGE: "en-US,en;q=0.9,ru;q=0.8,uk;q=0.7"
+HTTP_VERSION: "HTTP/1.1"
+ORIGINAL_SCRIPT_NAME: ""
+REMOTE_ADDR: "10.0.2.2"
+SERVER_NAME: "localhost"
+SERVER_PROTOCOL: "HTTP/1.1"</pre></div>
+</div>
+
+<h2 style="margin-top: 30px">Response</h2>
+<p><b>Headers</b>:</p> <pre>None</pre>
+
+</div>
+
+
+
+
+</body></html>
