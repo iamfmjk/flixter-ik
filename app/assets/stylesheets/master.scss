@@ -1,4 +1,5 @@
 @import 'bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:100,400,700|Noto+Serif:400,700&display=swap');
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
@@ -18,12 +19,28 @@ h1, h2, h3, h4, h5, h6, .navbar {
 
 }
 
-.navbar-brand {
-  font-family: 'Noto Serif', serif;
-  font-weight: 700;
+.nav-item a {
   color: #fff;
 }
 
+.menu-toggle {
+  color: #fff;
+  border:  1px solid #eee;
+  padding: 7px 7px;
+  border-radius: 10%;
+}
+.navbar-brand {
+  font-family: 'Noto Serif', serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: #b7e2e6;
+  border-right-style: double;
+  padding-right: 8px;
+}
+
+.navbar-brand span {
+  font-size: 14px;
+}
 .form-box {
   -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
   -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
@@ -139,4 +156,22 @@ ul .header .fa {
 
 .lessons li p {
   margin: 0;
+}
+
+.teachers {
+  background-color: #f2f8f9;
+  padding-top: 8px;
+}
+
+// .me {
+// display: table;
+// }
+.me img {
+  border-radius: 50%
+}
+
+.team {
+  background-color: #193f79;
+  color: #fff;
+  display: inline-block;
 }

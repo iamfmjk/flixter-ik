@@ -1,9 +1,19 @@
 <script>
-
   $(function() {
     $('.new-lesson-button').click(function() {
       var lessonUrl = $( event.target ).data('lesson-url');
       $('#newLessonForm').attr('action', lessonUrl);
+    });
+
+    $('.lessons').sortable({
+      update: function( event, ui ) {
+        $.ajax({
+          type: 'PUT',
+          url: ui.item.data('update-url'),
+          dataType: 'json',
+          data: { lesson: { row_order_position: ui.item.index() } }
+        });
+      }
     });
 
     $('.sections').sortable({
@@ -16,22 +26,22 @@
         });
       }
     });
-    $('.lessons').sortable({
-      update: function( event, ui ) {
-        $.ajax({
-          type: 'PUT',
-          url: ui.item.data('update-url'),
-          dataType: 'json',
-          data: { lesson: { row_order_position: ui.item.index() } }
-        });
-      }
-    });
 
    });
 </script>
 
 <br />
 <div class="form-box col-10 offset-1">
+  <% if flash[:error].present? %>
+    <div class="alert alert-danger mt-3 mb-3">
+      <%= flash[:error].html_safe %>
+    </div>
+  <% end %>
+  <% if flash[:success].present? %>
+    <div class="alert alert-success mt-3 mb-3">
+      <%= flash[:success].html_safe %>
+    </div>
+  <% end %>
   <h1 class="text-center"><%= current_course.title %></h1>
   <br />
   <div class="text-center">
@@ -123,7 +133,7 @@
         </div>
         <%= simple_form_for @lesson, html: {id: 'newLessonForm'}, url: "#" do |f| %>
         <div class="modal-body">
-            <%= f.input :title %>
+            <%= f.input :title, required: true %>
             <%= f.input :subtitle %>
             <%= f.input :video %>
         </div>

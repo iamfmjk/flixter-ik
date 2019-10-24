@@ -5,6 +5,11 @@ class Instructor::SectionsController < ApplicationController
 
   def create
     @section = current_course.sections.create(section_params)
+    if @section.save
+      flash[:success] = "New section is added"
+    else
+      flash[:error] = "Section can't be saved - important info is missing"
+    end
     redirect_to instructor_course_path(current_course)
   end
 

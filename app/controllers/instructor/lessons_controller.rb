@@ -6,6 +6,11 @@ class Instructor::LessonsController < ApplicationController
 
   def create
     @lesson = current_section.lessons.create(lesson_params)
+    if @lesson.save
+      flash[:success] = "New lesson is added"
+    else
+      flash[:error] = "Lesson can't be saved - important info is missing"
+    end
     redirect_to instructor_course_path(current_section.course)
   end
 
