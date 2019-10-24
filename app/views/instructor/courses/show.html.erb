@@ -32,12 +32,18 @@
 <div class="form-box col-10 offset-1">
   <h1 class="text-center"><%= current_course.title %></h1>
   <br />
-  <%= image_tag(current_course.image.to_s, class: 'img-fluid') %>
-  <%= link_to 'Preview As Student...', course_path(current_course), class: 'btn btn-warning float-right' %>
+  <div class="text-center">
+    <%= link_to 'Preview As Student...', course_path(current_course), class: 'btn btn-warning' %>
+    <br class="clr" />
+    <br class="clr" />
+    <%= image_tag(current_course.image.to_s, class: 'img-fluid') %>
+  </div>
   <br class="clr" />
   <div class="text-center">
     <%= link_to 'Add a new section...', new_instructor_course_section_path(current_course), class: 'btn btn-primary btn-lg' %>
   </div>
+  <br class="clr" />
+
   <ul class="sections">
     <% current_course.sections.rank(:row_order).each do |section| %>
       <li data-update-url="<%= instructor_section_path(section) %>" class="section-li">

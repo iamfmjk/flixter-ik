@@ -4,9 +4,11 @@
   <h1 class="text-center">Learn something today</h1>
   <hr />
   <% @courses.each do |course| %>
-    <h2 class="text-center">
+    <h2 class="text-center course-header">
       <%= link_to course.title, course_path(course) %>
-      <%= image_tag(course.image.to_s) %>
+      <div class="text-center">
+        <%= image_tag(course.image.to_s) %>
+      </div>
     </h2>
     <br />
     <div class="row">

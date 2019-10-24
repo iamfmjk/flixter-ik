@@ -52,7 +52,7 @@ h1, h2, h3, h4, h5, h6, .navbar {
   font-family: 'Noto Sans', sans-serif;
 }
 
-.frosty h1, h2 {
+.frosty h1 h2 {
   text-shadow: rgba(0, 0, 0, 0.95) 1px 1px;
 }
 
@@ -68,7 +68,7 @@ h1, h2, h3, h4, h5, h6, .navbar {
 
   .help-block {
   color: #ff3333;
-  background-color: #FFEEEE;
+  background-color: #ffeeee;
   border-radius: 3px;
   padding: 2px 8px 2px 8px;
   margin: 10px;
@@ -78,9 +78,12 @@ h1, h2, h3, h4, h5, h6, .navbar {
   clear: both;
 }
 
+.course-header a {
+  color: #193f79;
+}
 .section {
   border: 1px solid;
-  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+  border-color: #e4e4e4;
   padding: 20px;
 }
 .lesson {
@@ -103,11 +106,12 @@ h1, h2, h3, h4, h5, h6, .navbar {
 
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
 .section-li {
   border: 1px solid;
-  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+  border-color: #e4e4e4;
   padding: 20px;
   margin-bottom: 10px;
 }
