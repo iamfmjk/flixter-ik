@@ -1,5 +1,6 @@
 @import 'bootstrap';
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Noto+Serif:400,700&display=swap');
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 body {
   background: image_url('subtle_dots.png');
@@ -93,10 +94,45 @@ h1, h2, h3, h4, h5, h6, .navbar {
 .lesson a {
   color: #fff;
   font-family: 'Noto Sans', sans-serif;
-  font-weight: 100;
 }
 
 .lesson a b {
-  font-weight: 100;
   font-size: 25px;
+  font-weight: 100;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.section-li {
+  border: 1px solid;
+  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+ul .header {
+  font-size: 25px;
+}
+
+ul .header .fa {
+  font-size: 20px;
+}
+
+.lessons li {
+  background: black;
+  color: white;
+  margin: 10px;
+  font-family: 'Noto Sans', sans-serif;
+  padding: 10px;
+  font-size: 15px;
+}
+.lessons li b {
+  font-size: 25px;
+  font-weight: 100;
+}
+
+.lessons li p {
+  margin: 0;
 }
