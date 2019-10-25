@@ -14,8 +14,9 @@ h1, h2, h3, h4, h5, h6, .navbar {
 
 .navbar {
   font-family: 'Noto Sans', sans-serif;
-  box-shadow: 0px 1px 1px #2a2a2a;
-  background: image_url('noisy_net.png');
+  box-shadow: 0px 1px 1px #0e363a;
+  // background: image_url('noisy_net.png');
+  background-color: #082e31;
 
 }
 
@@ -54,23 +55,27 @@ h1, h2, h3, h4, h5, h6, .navbar {
 }
 
 .hero {
-  background: image_url('hero.jpg') no-repeat center center fixed;
+  background: image_url('hero4.jpeg') no-repeat center center local;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 370px;
-  box-shadow: 0px 3px 8px #2a2a2a;
+  height: 380px;
+  box-shadow: 0px 0px 8px #707070;
 }
 
 .frosty {
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+  background: rgba(7, 33, 35, 0.55);
+  color: #fff;
   font-family: 'Noto Sans', sans-serif;
 }
 
-.frosty h1 h2 {
-  text-shadow: rgba(0, 0, 0, 0.95) 1px 1px;
+.frosty h1 {
+  text-shadow: rgba(0, 0, 0, 0.95) 0px 1px 0px;
+}
+
+.frosty .lead {
+  text-shadow: rgba(0, 0, 0, 0.95) 0px 1px 0px;
 }
 
 .btn {
@@ -79,8 +84,6 @@ h1, h2, h3, h4, h5, h6, .navbar {
 
 .feature {
   width: 100%;
-  padding-left: 5%;
-  padding-right: 5%;
   }
 
   .help-block {
