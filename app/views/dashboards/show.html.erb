@@ -11,7 +11,8 @@
     </h3>
     <br />
     <%= image_tag course.image.to_s, class: 'img-fluid' %>
-    <br />
+    <br /><br />
+
     <div class="row">
       <div class="col-12 col-sm-8">
         <%= course.description %>
@@ -20,8 +21,8 @@
         <%= link_to "More Info...", course_path(course), class: 'btn btn-lg btn-primary' %>
       </div>
     </div>
-    <hr class="col-8 offset-2">
     <br class="clr" />
+    <hr class="col-8 offset-2">
     <% end %>
   <% else %>
     <em>You are not enrolled in any courses</em>
@@ -38,8 +39,7 @@
     </h3>
     <br />
     <%= image_tag course.image.to_s, class: 'img-fluid' %>
-    <br />
-    <br />
+    <br /><br />
     <div class="row">
       <div class="col-12 col-sm-8">
         <%= course.description %>
@@ -48,12 +48,14 @@
         <%= link_to "More Info...", course_path(course), class: 'btn btn-lg btn-primary' %>
       </div>
     </div>
-    <hr class="col-8 offset-2">
     <br class="clr" />
+    <hr class="col-8 offset-2">
     <% end %>
   <% else %>
     <em>You are not teaching any courses yet.</em>
   <% end %>
+  <br class="clr" />
+
 
 
 </div>
