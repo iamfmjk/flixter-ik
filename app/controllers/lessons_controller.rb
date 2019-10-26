@@ -1,6 +1,7 @@
 class LessonsController < ApplicationController
-before_action :authenticate_user!
-before_action :check_enrollment
+  before_action :authenticate_user!
+  before_action :check_enrollment
+
 
   def show
   end
