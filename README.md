@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Flixter allows users to teach and learn via video lessons. 
+This web application was made as a part o Berkeley Coding Bootcamp. 
 
-Things you may want to cover:
+**Built with:** Ruby on Rails, Bootstrap 4, Devise, Simple_form, Carrierwave
 
-* Ruby version
+## Key features
+**for teachers:**
+- create Courses, break them into Sections and add video Lessons.
+- rearrange sections and lessons within a Course
+- preview courses the way students will see them
+- make courses free or premium
+- edit course content, add, change and delete sections and lessons
 
-* System dependencies
+**for students:**
+- browse catalog of courses
+- preview course info
+- enroll in a free course
+- pay for and enroll in a premium course
+- see all their courses on the Dashboard
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
