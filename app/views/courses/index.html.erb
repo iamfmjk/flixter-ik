@@ -6,17 +6,18 @@
   <% @courses.each do |course| %>
     <h2 class="text-center course-header">
       <%= link_to course.title, course_path(course) %>
-      <div class="text-center">
-        <%= image_tag(course.image.to_s) %>
-      </div>
     </h2>
     <br />
-    <div class="row">
+    <%= image_tag(course.image.to_s, class: 'img-fluid mx-auto d-block') %>
+    <br />
+    <div class="col-sm-10 mx-auto course-info">
+      <div class="row">
       <div class="col-sm-8 col-12">
         <%= course.description %>
       </div>
-      <div class="col-sm-4 col-12 text-center">
+      <div class="col-sm-4 col-12 text-right">
         <%= link_to 'More details...', course_path(course), class: 'btn btn-primary btn-large' %>
+      </div>
       </div>
     </div>
     <br class="clr" />
