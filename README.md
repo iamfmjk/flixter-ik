@@ -3,7 +3,7 @@
 Flixter allows users to teach and learn via video lessons. 
 This web application was made as a part o Berkeley Coding Bootcamp. 
 
-**Built with:** Ruby on Rails, Bootstrap 4, Devise, Simple_form, Carrierwave
+**Built with:** Ruby on Rails, Bootstrap 4, Devise, Simple_form, Carrierwave, Stripe
 
 ## Key features
 **for teachers:**
